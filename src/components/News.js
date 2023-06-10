@@ -85,11 +85,11 @@ export class News extends Component {
   // constructor jab run karta hai jab bhi iss class ka object banta hai
   constructor() {
     super();
-    console.log("constructor inside new item is running!")
-    // this.state{}
-    //   articles: this.articles
-    //   loading: false 
-    // };
+    // console.log("constructor inside new item is running!")
+    // this.state{
+    //     articles: this.articles,
+    //     loading: false
+    // }
   }
   render() {
     return (
@@ -97,15 +97,12 @@ export class News extends Component {
         <div className="container my-3">
           <h2>Top Headlines</h2>
           <div className="row">
-            <div className="col-md-4">
-              <NewsItem title="aishwar" description="meenal" imageUrl="https://www.gannett-cdn.com/presto/2023/03/10/PNDN/519f01a4-3720-4a84-af8a-d3d39fb932a3-2000px-The_Last_Ride_logo_FINAL_RGB_WEB_w03-01_-_podcast_tile_copy.png?crop=1999%2C1124%2Cx1%2Cy403&width=1200"  newsUrl="todo"/>
-            </div>
-            <div className="col-md-4">
-              <NewsItem title="aishwar" description="meenal" imageUrl="https://www.gannett-cdn.com/presto/2023/03/10/PNDN/519f01a4-3720-4a84-af8a-d3d39fb932a3-2000px-The_Last_Ride_logo_FINAL_RGB_WEB_w03-01_-_podcast_tile_copy.png?crop=1999%2C1124%2Cx1%2Cy403&width=1200" newsUrl="todo" />
-            </div>
-            <div className="col-md-4">
-              <NewsItem title="aishwar" description="meenal" imageUrl="https://www.gannett-cdn.com/presto/2023/03/10/PNDN/519f01a4-3720-4a84-af8a-d3d39fb932a3-2000px-The_Last_Ride_logo_FINAL_RGB_WEB_w03-01_-_podcast_tile_copy.png?crop=1999%2C1124%2Cx1%2Cy403&width=1200" newsUrl="todo" />
-            </div>
+            {this.articles.map((element) => {
+              return <div className="col-md-4"  key={element.url}>
+                {/* they're sliced such that each compoenent alignment looks similar */}
+                <NewsItem  title={element.title.slice(0, 45)} description={element.description.slice(0,88)} imageUrl={element.urlToImage} newsUrl={element.url} />
+                </div>
+            })}
           </div>
         </div>
         <p>This is a new item</p>
